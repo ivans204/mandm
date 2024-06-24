@@ -353,6 +353,11 @@ html {
 
     .user-name {
         width: 25%;
+        margin-bottom: 16px;
+
+        @media screen and (min-width: 768px) {
+            margin-bottom: 0;
+        }
     }
 
     .form-inputs {
