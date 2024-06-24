@@ -67,6 +67,37 @@ class UserController extends Controller
         ]);
     }
 
+    public function searchPerson(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'q' => 'required|string|min:3',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Invalid search query',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $searchTerm = $request->input('q');
+
+        $searchedUsers = User::where('name', 'like', "%{$searchTerm}%")->get();
+
+        if ($searchedUsers->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => "Users not found!",
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Search results found',
+            'users' => $searchedUsers
+        ]);
+    }
+
     public function updateUsers(Request $request)
     {
           $this->validate($request, [
@@ -79,12 +110,12 @@ class UserController extends Controller
 
         $updatedUsers = [];
         foreach ($request->input('users') as $userData) {
-             if (isset($userData['userId'])) {
+            if (isset($userData['userId'])) {
                 $user = User::find($userData['userId']);
 
                 if ($user) {
-                $user->update($userData);
-                $updatedUsers[] = $user;
+                    $user->update($userData);
+                    $updatedUsers[] = $user;
                 } else {
                 // Handle user not found
                 }
@@ -97,6 +128,32 @@ class UserController extends Controller
             'success' => true,
             'message' => 'Users updated successfully!',
             'data' => $updatedUsers,
+        ]);
+    }
+
+    public function updatePerson(Request $request, $id)
+    {
+        $this->validate($request, [
+            'attend' => 'string|max:2',
+            'transport' => 'string|max:2',
+            'meal' => 'nullable|string|max:255',
+        ]);
+
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+            'error' => 'User not found!',
+            ], 404);
+        }
+
+        $userData = $request->input('user');
+        $user->update($userData);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'User updated successfully!',
+            'data' => $user->fresh(), 
         ]);
     }
 }

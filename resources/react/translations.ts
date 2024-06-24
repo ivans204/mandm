@@ -110,6 +110,7 @@ const engTranslate = {
     childrenQuestion: 'Can I bring my children?',
     childrenAnswer:
         'We love your little ones; however, we have decided to make the wedding adults-only due to the limited capacity of our venue, unless they are listed on your invitation. Thank you for your understanding.',
+    rsvpSubmitted: 'Your RSVP has been submitted, thank you!',
 };
 
 const hrvTranslate = {
@@ -207,7 +208,7 @@ const hrvTranslate = {
     thingsToDo: 'Ostale stvari',
     restaurantInDubrovnik: 'Kada trebam potvrditi dolazak?',
     qna: 'Pitanja i odgovori',
-    rsvpQuestion: 'When should I RSVP?',
+    rsvpQuestion: 'Kada trebam potvrditi dolazak?',
     rsvpAnswer:
         'Bili bismo Vam jako zahvalni ako biste mogli potvrditi svoj dolazak do 31. kolovoza 2024. Budući da prostor za svadbenu večeru ima ograničen kapacitet, Vaša potvrda dolaska nam je izuzetno važna. Bez potvrde Vašeg dolaska do 31. kolovoza 2024. pretpostavit ćemo da ne možete doći te Vam nećemo moći rezervirati mjesto za svadbenu večeru.',
     dressCodeQuestion: 'Postoji li dress code?',
@@ -219,6 +220,7 @@ const hrvTranslate = {
     childrenQuestion: 'Mogu li povesti djecu?',
     childrenAnswer:
         'Jako volimo Vaše mališane, ali odlučili smo da vjenčanje bude samo za odrasle s obzirom na ograničeni kapacitet našeg prostora za svadbenu večeru, osim ako Vaša djeca nisu navedena na Vašoj pozivnici. Hvala na razumijevanju.',
+    rsvpSubmitted: 'Vaš odgovor je zaprimljen, hvala Vam!',
 };
 
 export { t, engTranslate, hrvTranslate };

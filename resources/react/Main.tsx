@@ -65,6 +65,10 @@ function Main() {
                     <a href="#qa">
                         <img src={qa} alt="qa" />
                     </a>
+
+                    <button className="lang-btn" onClick={handleSaveToLocalStorage}>
+                        {activeLang === 'eng' ? 'hrv' : 'eng'}
+                    </button>
                 </div>
             </div>
 
@@ -265,8 +269,7 @@ function Main() {
                             <p>
                                 <span>{t('contact')}</span>
                                 <br />
-                                Mateo Mojaš
-                                <a href="mailto:mateo.mojas@scdu.hr">mateo.mojas@scdu.hr</a>
+                                <a href="mailto:akademis@scdu.hr">akademis@scdu.hr</a>
                             </p>
 
                             <p>
@@ -343,7 +346,7 @@ function Main() {
                             <strong>Taxi</strong>
                             <br />
                             {t('taxiDescription')}
-                            <a className="inline-a" href="+385 20 332 222">
+                            <a className="inline-a" href="tel:+385 20 332 222">
                                 {t('taxiNum')}
                             </a>{' '}
                             {t('uberDesc')}

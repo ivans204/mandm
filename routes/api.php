@@ -19,4 +19,6 @@ Route::group(['prefix' => '/users', 'as' => 'users.'], function () {
     Route::get('/all', [UserController::class, 'all']);
     Route::get('/search', [UserController::class, 'search']);
     Route::put('/update', [UserController::class, 'updateUsers']);
+    Route::get('/search-person', [UserController::class, 'searchPerson']);
+    Route::put('/update-person/{id}', [UserController::class, 'updatePerson']);
 });

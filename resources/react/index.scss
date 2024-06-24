@@ -38,6 +38,25 @@ html {
         display: flex;
         gap: 16px;
     }
+
+    .lang-btn {
+        font-family: 'Merriweather', sans-serif;
+        color: #a1622f;
+        text-decoration: none;
+        font-size: 22px;
+        line-height: 1;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+}
+
+.submitted-message {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 32px;
 }
 
 .image-container {

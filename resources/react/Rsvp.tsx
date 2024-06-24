@@ -1,37 +1,44 @@
 import { useState } from 'react';
-import { getSearchUsers, updateUsers } from './utils';
+import { getSearchPerson, updatePerson } from './utils';
 import { t } from './translations';
 
 interface IRsvp {
-    userId: number;
     attend?: string;
     transport?: string;
     meal?: string;
 }
 
+interface IPerson {
+    id: number;
+    name: string;
+    updated_at: string;
+    attend: string;
+    transport: string;
+}
+
 const Rsvp = () => {
     const [userName, setUserName] = useState('');
-    const [userGroups, setUserGroups] = useState([]);
-    const [selectedGroup, setSelectedGroup] = useState([]);
+    const [persons, setPersons] = useState([]);
+    const [selectedPerson, setSelectedPerson] = useState(null);
     const [mealText, setMealText] = useState('');
-    const [rsvp, setRsvp] = useState([]);
+    const [rsvp, setRsvp] = useState(null);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleSearch = () => {
-        setUserGroups([]);
-        setSelectedGroup([]);
+        setSelectedPerson(null);
+        setIsSubmitted(false);
 
-        getSearchUsers(userName).then((data) => {
-            const dataArray = data.map((obj) => Object.values(obj));
-            setUserGroups(dataArray);
+        getSearchPerson(userName).then((data) => {
+            setPersons(data);
         });
     };
 
-    const handleGroupSelect = (group) => {
-        setSelectedGroup(group);
+    const handlePersonSelect = (group) => {
+        setSelectedPerson(group);
     };
 
-    const handleRsvp = ({ userId, attend, transport }: IRsvp) => {
-        setRsvp({ ...rsvp, [userId]: { userId, attend, transport } });
+    const handleRsvp = ({ attend, transport }: IRsvp) => {
+        setRsvp({ attend, transport });
     };
 
     const handleMeal = (e) => {
@@ -41,14 +48,8 @@ const Rsvp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        for (const key in rsvp) {
-            if (rsvp.hasOwnProperty(key)) {
-                rsvp[key].meal = mealText;
-            }
-        }
-
-        updateUsers(Object.values(rsvp)).then(() => {
-            setSelectedGroup([]);
+        updatePerson({ ...rsvp, meal: mealText }, selectedPerson.id).then(() => {
+            setIsSubmitted(true);
         });
     };
 
@@ -76,19 +77,18 @@ const Rsvp = () => {
                 {t('continue')}
             </button>
 
-            {userGroups.length && !selectedGroup.length ? (
+            {isSubmitted ? <p className="submitted-message">{t('rsvpSubmitted')}</p> : null}
+
+            {persons.length && !selectedPerson ? (
                 <>
                     <p className="group-description">{t('groupDescription')}</p>
-                    {userGroups.map((users, index) => (
+                    {persons.map((user, index) => (
                         <div className="group-wrapper" key={index}>
-                            <div>
-                                {users.map((user) => (
-                                    <div className="user-names" key={user.id}>
-                                        {user.name}
-                                    </div>
-                                ))}
+                            <div className="user-names" key={user.id}>
+                                {user.name}
                             </div>
-                            <button className="group-select-btn" onClick={() => handleGroupSelect(users)}>
+
+                            <button className="group-select-btn" onClick={() => handlePersonSelect(user)}>
                                 {t('select')}
                             </button>
                         </div>
@@ -96,94 +96,91 @@ const Rsvp = () => {
                 </>
             ) : null}
 
-            {selectedGroup.length ? (
+            {selectedPerson && !isSubmitted ? (
                 <form className="attend-form">
-                    {selectedGroup.map((user) => (
-                        <div className="group-wrapper" key={user.id}>
-                            <div className="user-name">{user.name}</div>
-                            {user.updated_at ? (
-                                user.attend === 'DA' ? (
-                                    t('rsvpAttend')
-                                ) : (
-                                    t('rsvpNoAttend')
-                                )
-                            ) : (
-                                <div className="form-inputs">
-                                    <div
-                                        className="radio-options"
-                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                                            handleRsvp({
-                                                userId: user.id,
-                                                attend: e.target.value,
-                                                transport: rsvp[user.id]?.transport ?? null,
-                                            })
-                                        }
-                                    >
-                                        <div className="radio-input">
-                                            <input
-                                                required
-                                                type="radio"
-                                                name={`radio-attend-${user.id}`}
-                                                id={`attending-${user.id}`}
-                                                value="DA"
-                                            />
-                                            <label htmlFor={`attending-${user.id}`}>{t('rsvpAttend')}</label>
-                                        </div>
-                                        <div className="radio-input">
-                                            <input
-                                                required
-                                                type="radio"
-                                                name={`radio-attend-${user.id}`}
-                                                id={`not-attending-${user.id}`}
-                                                value="NE"
-                                            />
-                                            <label htmlFor={`not-attending-${user.id}`}>{t('rsvpNoAttend')}</label>
-                                        </div>
+                    <div className="group-wrapper" key={selectedPerson.id}>
+                        <div className="user-name">{selectedPerson.name}</div>
+                        {selectedPerson.updated_at ? (
+                            <div className="form-inputs">
+                                <div>{selectedPerson.attend === 'DA' ? t('rsvpAttend') : t('rsvpNoAttend')}</div>
+                                <div>{selectedPerson.transport === 'DA' ? t('rsvpBus') : t('rsvpNoBus')}</div>
+                            </div>
+                        ) : (
+                            <div className="form-inputs">
+                                <div
+                                    className="radio-options"
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                        handleRsvp({
+                                            attend: e.target.value,
+                                            transport: rsvp?.transport ?? selectedPerson.transport,
+                                        })
+                                    }
+                                >
+                                    <div className="radio-input">
+                                        <input
+                                            required
+                                            type="radio"
+                                            name={`radio-attend-${selectedPerson.id}`}
+                                            id={`attending-${selectedPerson.id}`}
+                                            value="DA"
+                                        />
+                                        <label htmlFor={`attending-${selectedPerson.id}`}>{t('rsvpAttend')}</label>
                                     </div>
-
-                                    <div
-                                        className="radio-options"
-                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                                            handleRsvp({
-                                                userId: user.id,
-                                                transport: e.target.value,
-                                                attend: rsvp[user.id]?.attend ?? null,
-                                            })
-                                        }
-                                    >
-                                        <div className="radio-input">
-                                            <input
-                                                required
-                                                type="radio"
-                                                name={`radio-bus-${user.id}`}
-                                                id={`bus-${user.id}`}
-                                                value="DA"
-                                            />
-                                            <label htmlFor={`bus-${user.id}`}>{t('rsvpBus')}</label>
-                                        </div>
-                                        <div className="radio-input">
-                                            <input
-                                                required
-                                                type="radio"
-                                                name={`radio-bus-${user.id}`}
-                                                id={`not-bus-${user.id}`}
-                                                value="NE"
-                                            />
-                                            <label htmlFor={`not-bus-${user.id}`}>{t('rsvpNoBus')}</label>
-                                        </div>
+                                    <div className="radio-input">
+                                        <input
+                                            required
+                                            type="radio"
+                                            name={`radio-attend-${selectedPerson.id}`}
+                                            id={`not-attending-${selectedPerson.id}`}
+                                            value="NE"
+                                        />
+                                        <label htmlFor={`not-attending-${selectedPerson.id}`}>
+                                            {t('rsvpNoAttend')}
+                                        </label>
                                     </div>
                                 </div>
-                            )}
-                        </div>
-                    ))}
 
-                    {!selectedGroup[0].updated_at ? (
+                                <div
+                                    className="radio-options"
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                        handleRsvp({
+                                            transport: e.target.value,
+                                            attend: rsvp?.attend ?? selectedPerson.attend,
+                                        })
+                                    }
+                                >
+                                    <div className="radio-input">
+                                        <input
+                                            required
+                                            type="radio"
+                                            name={`radio-bus-${selectedPerson.id}`}
+                                            id={`bus-${selectedPerson.id}`}
+                                            value="DA"
+                                        />
+                                        <label htmlFor={`bus-${selectedPerson.id}`}>{t('rsvpBus')}</label>
+                                    </div>
+                                    <div className="radio-input">
+                                        <input
+                                            required
+                                            type="radio"
+                                            name={`radio-bus-${selectedPerson.id}`}
+                                            id={`not-bus-${selectedPerson.id}`}
+                                            value="NE"
+                                        />
+                                        <label htmlFor={`not-bus-${selectedPerson.id}`}>{t('rsvpNoBus')}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {!selectedPerson.updated_at ? (
                         <>
                             <div className="meal-input">
-                                <label htmlFor={`textarea-attend-${selectedGroup[0].id}`}>{t('rsvpMeal')}</label>
+                                <label htmlFor={`textarea-attend-${selectedPerson.id}`}>{t('rsvpMeal')}</label>
                                 <textarea
-                                    name={`textarea-attend-${selectedGroup[0].id}`}
-                                    id={`meal-${selectedGroup[0].id}`}
+                                    name={`textarea-attend-${selectedPerson.id}`}
+                                    id={`meal-${selectedPerson.id}`}
                                     onChange={handleMeal}
                                     rows={4}
                                 ></textarea>
