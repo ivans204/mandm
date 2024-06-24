@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { getSearchPerson, updatePerson } from './utils';
 import { t } from './translations';
 
@@ -24,6 +24,8 @@ const Rsvp = () => {
     const [rsvp, setRsvp] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
+    const ref = useRef(null);
+
     const handleSearch = () => {
         setSelectedPerson(null);
         setIsSubmitted(false);
@@ -35,6 +37,7 @@ const Rsvp = () => {
 
     const handlePersonSelect = (group) => {
         setSelectedPerson(group);
+        ref.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     const handleRsvp = ({ attend, transport }: IRsvp) => {
@@ -50,6 +53,7 @@ const Rsvp = () => {
 
         updatePerson({ ...rsvp, meal: mealText }, selectedPerson.id).then(() => {
             setIsSubmitted(true);
+            setUserName('');
         });
     };
 
@@ -73,7 +77,7 @@ const Rsvp = () => {
 
             <p className="post-label">{t('nameExample')}</p>
 
-            <button onClick={handleSearch} className="submit-btn" disabled={!userName}>
+            <button ref={ref} onClick={handleSearch} className="submit-btn" disabled={!userName}>
                 {t('continue')}
             </button>
 

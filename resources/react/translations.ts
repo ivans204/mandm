@@ -129,8 +129,9 @@ const hrvTranslate = {
     rsvpNoAttend: 'Ne potvrđuje dolazi',
     rsvpBus: 'Potvrđuje prijevoz autobusom',
     rsvpNoBus: 'Ne potvrđuje prijevoz autobusom',
-    rsvpMeal: 'Please indicate any dietary restrictions or meal preferences:',
-    submit: 'Submit',
+    rsvpMeal:
+        'Molimo, navedite sve prehrambene restrikcije ili preferencije: mesni meni, vegetarijanski meni, alergije ili prehrambene restrikcije.',
+    submit: 'Potvrdi',
     groupDescription: 'Odaberite svoje podatke ispod ili pokušajte ponovno.',
     groupSelect: 'Odaberi',
     nameExample: 'Na primjer: Ivan Horvat (ne obitelj Horvat i sl.)',
