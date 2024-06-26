@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/users', function () {
-    $users = User::all();
+    $users = User::orderBy('group_id', 'asc')->get();
     return view('user', ['users' => $users]);
 });
 
