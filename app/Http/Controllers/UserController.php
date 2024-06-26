@@ -156,4 +156,48 @@ class UserController extends Controller
             'data' => $user->fresh(), 
         ]);
     }
+
+    public function exportCSV()
+    {
+        $filename = 'gosti.csv';
+    
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename=\"$filename\"",
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
+        ];
+    
+        return response()->stream(function () {
+            $handle = fopen('php://output', 'w');
+    
+            // Add CSV headers
+            fputcsv($handle, [
+                'Name',
+                'Attend',
+                'Transport',
+                'Meal',
+            ]);
+    
+             // Fetch and process data in chunks
+            User::chunk(25, function ($users) use ($handle) {
+                foreach ($users as $user) {
+             // Extract data from each user.
+                    $data = [
+                        isset($user->name)? $user->name : '',
+                        isset($user->attend)? $user->attend : '',
+                        isset($user->transport)? $user->transport : '',
+                        isset($user->meal)? $user->meal : '',
+                    ];
+    
+             // Write data to a CSV file.
+                    fputcsv($handle, $data);
+                }
+            });
+    
+            // Close CSV file handle
+            fclose($handle);
+        }, 200, $headers);
+    }
 }

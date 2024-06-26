@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/users', function () {
+    $users = User::all();
+    return view('user', ['users' => $users]);
+});
+
+Route::resource('user', UserController::class);
+Route::get('export-csv', [UserController::class, 'exportCSV'])->name('export');

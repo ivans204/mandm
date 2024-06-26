@@ -359,8 +359,8 @@ function Main() {
                         <p>{t('favPlace')}</p>
                         <p>
                             {t('moreInfo')}
-                            <a className="inline-a" href="https://www.lokrum.hr/">
-                                https://www.lokrum.hr/
+                            <a className="inline-a" href={t('lokrumLink')}>
+                                {t('lokrumLink')}
                             </a>
                         </p>
                     </div>
@@ -370,11 +370,8 @@ function Main() {
                         <p>{t('sight')}</p>
                         <p>
                             {t('moreInfo')}
-                            <a
-                                className="inline-a"
-                                href="https://shop.citywallsdubrovnik.hr/hr/prodaja-ulaznica-za-sljedece-lokacije"
-                            >
-                                https://shop.citywallsdubrovnik.hr/hr/prodaja-ulaznica-za-sljedece-lokacije
+                            <a className="inline-a" href={t('cityWallsLink')}>
+                                {t('cityWallsLinkText')}
                             </a>
                         </p>
                     </div>

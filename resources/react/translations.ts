@@ -13,7 +13,7 @@ const engTranslate = {
     date: 'October 5, 2024',
     rsvpTitle: 'RSVP',
     rsvpContent:
-        'Please, enter your first and last name to confirm RSVP, any dietary restrictions or alergies and transportation.',
+        'Please, enter your first and last name to confirm RSVP, any dietary restrictions or allergies and transportation.',
     rsvpContent2:
         'We want you to relax and safely enjoy our Big Day. That is why we have arranged complimentary transportation to and from the wedding ceremony and reception. Please, confirm shuttle transportation.',
     rsvpNamePlaceholder: 'First and Last name',
@@ -21,7 +21,7 @@ const engTranslate = {
     rsvpNoAttend: 'Will not attend',
     rsvpBus: 'Will use shuttle bus',
     rsvpNoBus: 'Will not use shuttle bus',
-    rsvpMeal: 'Please indicate any dietary restrictions or alergies.',
+    rsvpMeal: 'Please indicate any dietary restrictions or allergies .',
     submit: 'Submit',
     groupDescription: 'Select your info below or try searching again.',
     groupSelect: 'Select',
@@ -39,12 +39,12 @@ const engTranslate = {
     time630pm: '6:30 PM',
     busDeparture: 'Bus departure for Šišini dubi',
     ploceGate: 'from the Ploče gate',
-    discplaimerPart: 'Important: If you are traveling in your own vehicle, please use ',
+    discplaimerPart: 'Important: If you are traveling by your own vehicle, please use ',
     thisRoute: 'this route',
     onlyAsItIsTheSafest: ' only as it is the safest option.',
     availableParking: 'The parking will be available in Šišini dubi.',
     time7Pm: '7:00 PM',
-    warmUp: 'Drinks and warm up',
+    warmUp: 'Drinks and warm-up',
     beforeDinner: 'before the dinner',
     sisiniDubi: 'Šišini dubi',
     time8Pm: '8:00 PM',
@@ -82,10 +82,10 @@ const engTranslate = {
         'The best way to get to the Old Town is by public transport. Buses run very often. To get to the Pile Gate (one of the main entrances to the Old Town), please, use the buses numbers: 1A, 1B, 3, 4, 6, 8, 9.',
     busPrice:
         'The price of the one-way ticket is 2,00 EUR if you buy from the driver or 1,73 EUR if you buy it on the kiosk.',
-    taxiDescription: 'We have Uber in Dubrovnik, as well as Bolt, and some other Taxi apps, and local Taxi service (',
+    taxiDescription: 'We have Uber in Dubrovnik, as well as Bolt, and some other Taxi apps, and local Taxi service ',
     taxiNum: 'Plavi taxi: +385 20 332 222',
     uberDesc:
-        '). While we will have organized transport available, some of you might opt for using Taxis, in which case we recommend Uber.',
+        '. While we will have organized transport available, some of you might opt for using Taxis, in which case we recommend Uber.',
     lokrumIsland: 'Lokrum Island',
     favPlace: 'Our favorite place - easy to get to from the Old town port.',
     moreInfo: 'For more information: ',
@@ -116,6 +116,9 @@ const engTranslate = {
     childrenAnswer:
         'We love your little ones; however, we have decided to make the wedding adults-only due to the limited capacity of our venue, unless they are listed on your invitation. Thank you for your understanding.',
     rsvpSubmitted: 'Your RSVP has been submitted, thank you!',
+    lokrumLink: 'https://www.lokrum.hr/eng/',
+    cityWallsLink: 'https://shop.citywallsdubrovnik.hr/en/buy-tickets-for-the-following-locations',
+    cityWallsLinkText: 'https://shop.citywallsdubrovnik.hr/',
 };
 
 const hrvTranslate = {
@@ -128,7 +131,7 @@ const hrvTranslate = {
     date: '5. listopada 2024.',
     rsvpTitle: 'RSVP',
     rsvpContent:
-        'Molimo, potvrdite svoj dolazak. Unesite svoje ime i prezime kako biste potvrdili dolazak i potvrdili dogovoreni prijevoz autobusom. Molimo, navedite sve prehrambene restrikcije ili alergije.',
+        'Molimo, potvrdite svoj dolazak. Unesite svoje ime i prezime kako biste potvrdili dolazak i dogovoreni prijevoz autobusom. Molimo, navedite sve prehrambene restrikcije ili alergije.',
     rsvpContent2:
         'Želimo da se opustite i sigurno uživate na naš veliki dan pa smo zato organizirali besplatan prijevoz s mjesta ceremonije vjenčanja do mjesta svadbene večere i obratno.',
     rsvpNamePlaceholder: 'Ime i prezime',
@@ -153,10 +156,11 @@ const hrvTranslate = {
     church: 'Crkva svetog Vlaha',
     time630pm: '18.30 h',
     busDeparture: 'Polazak organiziranog autobusa za Šišine dube',
-    ploceGate: 'iz Ploča',
+    ploceGate: 's Ploča',
     discplaimerPart: 'Važno: Ako putujete vlastitim vozilom, molimo Vas da koristite samo ',
     thisRoute: 'ovu rutu',
-    onlyAsItIsTheSafest: '  jer je najsigurnija i najjednostavnija. novi red Osiguran je parking u Šišinim dubima.',
+    onlyAsItIsTheSafest: '  jer je najsigurnija i najjednostavnija.',
+    availableParking: 'Osiguran je parking u Šišinim dubima.',
     time7Pm: '19.00 h',
     warmUp: 'Aperitiv',
     beforeDinner: '',
@@ -164,9 +168,9 @@ const hrvTranslate = {
     time8Pm: '20.00 h',
     dinner: 'Svadbena večera',
     time1am: '1.00 h',
-    busDepartureSisiniDubi: 'Povratak organiziranim autobusom do Ploča iz Šišinih duba',
+    busDepartureSisiniDubi: 'Povratak organiziranim autobusom na Ploče iz Šišinih duba',
     time3am: '3.00 h',
-    lastBus: 'Povratak organiziranim autobusom do Ploča (zadnji autobus) iz Šišinih duba',
+    lastBus: 'Povratak organiziranim autobusom na Ploče (zadnji autobus) iz Šišinih duba',
     accomodationTitle: 'Napomena za putovanje',
     accomodationContent:
         'Hotel Akademis Academia nudi posebne cijene za naše goste s uključenim doručkom i parkiranjem u garaži. Prilikom rezervacije navedite da ste naši gosti.',
@@ -197,9 +201,9 @@ const hrvTranslate = {
         'Najbolji način za dolazak do Starog grada je javnim gradskim prijevozom. Autobusi voze vrlo često. Da biste stigli do Pila (jedan od glavnih ulaza u Stari grad), koristite autobuse broj: 1A, 1B, 3, 4, 6, 8, 9.',
     busPrice: 'Cijena jednosmjerne karte je 2,00 EUR ako je kupite kod vozača ili 1,73 EUR ako je kupite na kiosku.',
     taxiDescription: 'U Dubrovniku imamo Uber, Bolt, kao i neke druge taxi aplikacije te lokalnu taxi službu ',
-    taxiNum: '(Plavi taxi: +385 20 332 222)',
+    taxiNum: 'Plavi taxi: +385 20 332 222',
     uberDesc:
-        'Iako ćemo imati organizirani prijevoz, neki od Vas možda će koristiti taxi. U tom slučaju preporučujemo Uber.',
+        '. Iako ćemo imati organizirani prijevoz, neki od Vas možda će koristiti taxi. U tom slučaju preporučujemo Uber.',
     lokrumIsland: 'Otok Lokrum',
     favPlace: 'Naše omiljeno mjesto - lako dostupno iz luke u Starom gradu.',
     moreInfo: 'Za više informacija: ',
@@ -215,7 +219,7 @@ const hrvTranslate = {
     thingsToDo: 'Restorani u Dubrovniku',
     restaurantInDubrovnik: '',
     qna: 'Pitanja i odgovori',
-    rsvpQuestion: 'Kada trebam potvrditi dolazak?',
+    rsvpQuestion: 'Kada potvrditi dolazak?',
     rsvpAnswer: 'Bili bismo Vam jako zahvalni ako biste mogli potvrditi svoj dolazak do ',
     rsvpAnswer2: '31. kolovoza 2024',
     rsvpAnswer3:
@@ -230,6 +234,9 @@ const hrvTranslate = {
     childrenAnswer:
         'Jako volimo Vaše mališane, ali odlučili smo da vjenčanje bude samo za odrasle s obzirom na ograničeni kapacitet našeg prostora za svadbenu večeru, osim ako Vaša djeca nisu navedena na Vašoj pozivnici. Hvala na razumijevanju.',
     rsvpSubmitted: 'Vaš odgovor je zaprimljen, hvala Vam!',
+    lokrumLink: 'https://www.lokrum.hr/',
+    cityWallsLink: 'https://shop.citywallsdubrovnik.hr/hr/prodaja-ulaznica-za-sljedece-lokacije',
+    cityWallsLinkText: 'https://shop.citywallsdubrovnik.hr/',
 };
 
 export { t, engTranslate, hrvTranslate };
