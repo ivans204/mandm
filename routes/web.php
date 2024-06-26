@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/users', function () {
+Route::get('/gosti', function () {
     $users = User::orderBy('group_id', 'asc')->get();
     return view('user', ['users' => $users]);
 });
