@@ -61,6 +61,7 @@ const Rsvp = () => {
         <div className="rsvp-container">
             <h2 className="title">{t('rsvpTitle')}</h2>
             <p className="content">{t('rsvpContent')}</p>
+            <p className="content">{t('rsvpContent2')}</p>
 
             <input
                 className="input"

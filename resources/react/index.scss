@@ -145,7 +145,7 @@ html {
 
     .header-info {
         color: #ffffff;
-        font-size: 18px;
+        font-size: 22px;
         line-height: 1.3;
         display: flex;
         flex-direction: column;
@@ -804,6 +804,18 @@ html {
 
                 @media screen and (min-width: 768px) {
                     width: auto;
+                }
+            }
+
+            .images {
+                display: flex;
+                // flex-wrap: wrap;
+                width: fit-content;
+                gap: 16px;
+
+                img {
+                    width: calc(25% - 12px);
+                    object-fit: cover;
                 }
             }
         }

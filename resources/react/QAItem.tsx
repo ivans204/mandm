@@ -1,7 +1,7 @@
-import { useState } from "react";
-import iconPlus from "./assets/icons/icon-plus.svg";
+import { useState } from 'react';
+import iconPlus from './assets/icons/icon-plus.svg';
 
-const QAItem = ({ title, answer }) => {
+const QAItem = ({ title, children }) => {
     const [isExpand, setIsExpand] = useState(false);
 
     const handleExpand = () => {
@@ -9,13 +9,13 @@ const QAItem = ({ title, answer }) => {
     };
 
     return (
-        <div className={`qa-item ${isExpand && "qa-height"}`} onClick={handleExpand}>
-            <div className="qa-title">
+        <div className={`qa-item ${isExpand && 'qa-height'}`}>
+            <div className="qa-title" onClick={handleExpand}>
                 <p>{title}</p>
                 <img src={iconPlus} alt="plus" />
             </div>
 
-            <p className="qa-answer">{answer}</p>
+            <p className="qa-answer">{children}</p>
         </div>
     );
 };

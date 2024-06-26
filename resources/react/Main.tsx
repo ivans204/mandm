@@ -7,8 +7,11 @@ import schedule from './assets/icons/schedule.svg';
 import accomodation from './assets/icons/accomontadion.svg';
 import qa from './assets/icons/qa.svg';
 import chevron from './assets/icons/chevron-down.svg';
-import thingsToDo from './assets/things-to-do.png';
 import busIcon from './assets/icons/icon-bus.svg';
+import kopun from './assets/kopun.jpg';
+import arsenal from './assets/arsenal.jpg';
+import dundoMaroje from './assets/dundoMaroje.jpg';
+import dubravka from './assets/dubravka.jpg';
 import hotel from './assets/hotel-akademis.jpg';
 import glassesIcon from './assets/icons/icon-glasses.svg';
 import churchIcon from './assets/icons/icon-church.svg';
@@ -50,9 +53,6 @@ function Main() {
         <main>
             <div className="mobile-nav">
                 <div className="icons">
-                    <a href="#home">
-                        <img src={home} alt="home" />
-                    </a>
                     <a href="#rsvp">
                         <img src={rsvp} alt="rsvp" />
                     </a>
@@ -75,7 +75,6 @@ function Main() {
             <section id="home">
                 <div className="image-container">
                     <nav className="nav">
-                        <a href="#home">{t('home')}</a>
                         <a href="#rsvp">{t('rsvp')}</a>
                         <a href="#schedule">{t('schedule')}</a>
                         <a href="#accomodation">{t('accomodation')}</a>
@@ -185,6 +184,8 @@ function Main() {
                         {t('thisRoute')}
                     </a>
                     {t('onlyAsItIsTheSafest')}
+                    <br />
+                    {t('availableParking')}
                 </div>
 
                 <div className="wrapper mt">
@@ -348,7 +349,7 @@ function Main() {
                             {t('taxiDescription')}
                             <a className="inline-a" href="tel:+385 20 332 222">
                                 {t('taxiNum')}
-                            </a>{' '}
+                            </a>
                             {t('uberDesc')}
                         </p>
                     </div>
@@ -358,8 +359,8 @@ function Main() {
                         <p>{t('favPlace')}</p>
                         <p>
                             {t('moreInfo')}
-                            <a className="inline-a" href="https://www.lokrum.hr/eng/">
-                                https://www.lokrum.hr/eng/
+                            <a className="inline-a" href="https://www.lokrum.hr/">
+                                https://www.lokrum.hr/
                             </a>
                         </p>
                     </div>
@@ -371,9 +372,9 @@ function Main() {
                             {t('moreInfo')}
                             <a
                                 className="inline-a"
-                                href="https://shop.citywallsdubrovnik.hr/en/buy-tickets-for-the-following-locations"
+                                href="https://shop.citywallsdubrovnik.hr/hr/prodaja-ulaznica-za-sljedece-lokacije"
                             >
-                                https://shop.citywallsdubrovnik.hr/en/buy-tickets-for-the-following-locations
+                                https://shop.citywallsdubrovnik.hr/hr/prodaja-ulaznica-za-sljedece-lokacije
                             </a>
                         </p>
                     </div>
@@ -399,13 +400,17 @@ function Main() {
                                     <strong>{t('restaurantInDubrovnik')}</strong>
                                 </p>
                                 <p>Dubravka 1836</p>
-                                <p>Pizzeria Castro</p>
-                                <p>Arsenal</p>
                                 <p>Dundo Maroje</p>
+                                <p>Arsenal</p>
                                 <p>Kopun</p>
                             </div>
 
-                            <img src={thingsToDo} />
+                            <div className="images">
+                                <img src={dubravka} alt="dubravka" />
+                                <img src={dundoMaroje} alt="dundo maroje" />
+                                <img src={arsenal} alt="arsenal" />
+                                <img src={kopun} alt="kopun" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -416,10 +421,14 @@ function Main() {
                     <h2 className="title">{t('qna')}</h2>
 
                     <div className="qa-wrapper">
-                        <QAItem title={t('rsvpQuestion')} answer={t('rsvpAnswer')} />
-                        <QAItem title={t('dressCodeQuestion')} answer={t('dressCodeAnswer')} />
-                        <QAItem title={t('dateQuestion')} answer={t('dateAnswer')} />
-                        <QAItem title={t('childrenQuestion')} answer={t('childrenAnswer')} />
+                        <QAItem title={t('rsvpQuestion')}>
+                            {t('rsvpAnswer')}
+                            <strong>{t('rsvpAnswer2')}</strong>
+                            {t('rsvpAnswer3')}
+                        </QAItem>
+                        <QAItem title={t('dressCodeQuestion')}>{t('dressCodeAnswer')}</QAItem>
+                        <QAItem title={t('dateQuestion')}>{t('dateAnswer')}</QAItem>
+                        <QAItem title={t('childrenQuestion')}>{t('childrenAnswer')}</QAItem>
                     </div>
                 </div>
             </section>
